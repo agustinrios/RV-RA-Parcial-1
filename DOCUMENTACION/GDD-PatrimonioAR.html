@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>GDD Patrimonio AR</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm; }
+
+  html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; }
+  body { margin: 0; color: #111; line-height: 1.30; }
+
+  .pagina { page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; }
+
+  .caratula { text-align: center; border-bottom: 2px solid #111; padding-bottom: 10mm; margin-bottom: 8mm; }
+  .caratula .universidad { font-size: 11pt; letter-spacing: .06em; text-transform: uppercase; }
+  .caratula .materia { font-size: 13pt; font-weight: bold; margin-top: 4mm; }
+  .caratula .docente { font-size: 11pt; margin-top: 2mm; }
+  .caratula .proyecto { font-size: 20pt; font-weight: bold; margin: 9mm 0 3mm; letter-spacing: .01em; }
+  .caratula .bajada { font-size: 11pt; font-style: italic; }
+  .caratula .alumno { font-size: 11pt; margin-top: 8mm; }
+  .caratula .alumno strong { font-size: 12pt; }
+
+  h2 { font-size: 12pt; margin: 4.5mm 0 2mm; text-transform: uppercase; letter-spacing: .04em;
+       border-bottom: 1px solid #999; padding-bottom: 1mm; }
+  h3 { font-size: 11pt; margin: 4mm 0 1mm; }
+  p { margin: 0 0 2.6mm; text-align: justify; }
+  ul { margin: 0 0 2.6mm; padding-left: 6mm; }
+  li { margin-bottom: 1.2mm; }
+
+  .destacado { border-left: 3px solid #111; padding: 2.5mm 0 2.5mm 4mm; margin: 0 0 3.5mm;
+               font-size: 11pt; }
+  .destacado em { font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 11pt; margin: 0 0 2mm; }
+  th, td { border: 1px solid #999; padding: 1.1mm 1.8mm; text-align: left; vertical-align: top; }
+  th { background: #eee; font-weight: bold; }
+
+
+  .marcadores { display: flex; gap: 4mm; margin: 0 auto 2mm; max-width: 96mm; }
+  .marcador { flex: 1 1 0; }
+  .marcador img { width: 100%; display: block; border: 1px solid #999; }
+  .marcador .epigrafe { font-size: 9.5pt; text-align: center; margin-top: 1mm; line-height: 1.2; }
+</style>
+</head>
+<body>
+
+<!-- ============================================ PAGINA 1 -->
+<section class="pagina">
+
+  <div class="caratula">
+    <div class="universidad">Universidad Tecnologica Nacional</div>
+    <div class="materia">Programacion de Realidad Virtual y Aumentada</div>
+    <div class="docente">Docente: Mariano Antonetti &middot; Parcial 1 &middot; Game Design Document</div>
+
+    <div class="proyecto">PATRIMONIO AR</div>
+    <div class="bajada">Un set de cartas que devuelve el patrimonio argentino a escala</div>
+
+    <div class="alumno">
+      Alumno: <strong>Rios Daniel Agustin</strong><br>
+      Noviembre de 2026
+    </div>
+  </div>
+
+  <h2>1. High Concept</h2>
+
+  <div class="destacado">
+    <em>Tres cartas de patrimonio argentino que, al escanearse con el celular, levantan el lugar
+    en 3D sobre la tarjeta, los tres a la misma escala, para poder compararlos de un vistazo y
+    entender de cuanto estamos hablando cuando decimos &laquo;67 metros&raquo;.</em>
+  </div>
+
+  <p>
+    El proyecto es un prototipo de Realidad Aumentada desarrollado en Unity 6000.3.17f1 con
+    AR Foundation 6.3.5 y Google ARCore XR Plugin 6.3.5, sobre el sistema de seguimiento de
+    imagenes multiples (<em>image tracking</em>). Cada una de las tres cartas funciona como
+    imagen marcadora y tiene asociado un diorama tridimensional propio: el Obelisco de Buenos
+    Aires, las Cataratas del Iguazu y el Glaciar Perito Moreno.
+  </p>
+
+  <p>
+    La decision de diseno que ordena todo el desarrollo es que <strong>cada lugar esta modelado
+    en metros reales</strong> y los tres comparten una <strong>unica escala, 1:400</strong>.
+    Sostener una escala comun, en lugar de ajustar cada lugar al tamano de su tarjeta, es lo que
+    hace que los tres se puedan <strong>comparar entre si</strong>: el frente del Perito Moreno,
+    de 70 metros, se ve apenas mas alto que el Obelisco, de 67,5. Eso es lo que pasa en la
+    realidad, y es justamente lo contrario de lo que sugiere cualquier fotografia de los dos.
+  </p>
+
+  <p>
+    Las tres cartas pueden rastrearse de manera simultanea. Un HUD en pantalla lista las
+    cartas que el sistema tiene registradas y el estado de seguimiento de cada una, de modo que
+    el seguimiento multiple no sea una afirmacion del documento sino algo que se lee en la
+    pantalla mientras la aplicacion corre.
+  </p>
+
+</section>
+
+<!-- ============================================ PAGINA 2 -->
+<section class="pagina">
+
+  <h2>2. Problema o necesidad que resuelve</h2>
+
+  <p>
+    El patrimonio natural y arquitectonico argentino se comunica, casi siempre, con fotografias.
+    Y la fotografia es justamente el medio que peor transmite la magnitud: una imagen del frente
+    del Perito Moreno y una de un bloque de hielo cualquiera se ven parecidas, porque falta el
+    termino de comparacion. El dato numerico tampoco alcanza por si solo. &laquo;Setenta metros
+    sobre el nivel del agua&raquo; es una cifra que se lee y se olvida, porque nadie tiene una
+    referencia intuitiva de setenta metros verticales.
+  </p>
+
+  <p>
+    El problema concreto, entonces, no es la falta de informacion: es la falta de
+    <strong>escala percibida</strong>. La informacion sobre estos tres lugares esta disponible en
+    cualquier buscador; lo que no esta disponible es una manera de dimensionarla.
+  </p>
+
+  <p>
+    Patrimonio AR ataca ese punto y solamente ese. No intenta reemplazar a una guia turistica ni
+    competir con un video: pone los tres lugares sobre la mesa, a una misma escala declarada, al
+    alcance de la mano y uno al lado del otro. El recurso es viejo y conocido en museografia y en
+    arquitectura (la maqueta a escala), y la Realidad Aumentada lo hace
+    posible sin maqueta fisica, sin vitrina y sin sala: alcanza con una carta impresa y un
+    telefono.
+  </p>
+
+  <p>
+    Por eso el soporte elegido es la carta y no una aplicacion con menu de lugares. La carta es
+    un objeto que ya existe en el circuito turistico, que se regala, que se manda y que se guarda;
+    convertirla en la llave de acceso al contenido mantiene el gesto fisico y no obliga a aprender
+    ninguna interfaz. El usuario apunta la camara y el lugar aparece.
+  </p>
+
+  <h2>3. Usuario objetivo</h2>
+
+  <h3>Usuario primario: estudiantes de nivel primario y secundario (9 a 16 anos)</h3>
+  <p>
+    Es el publico donde el problema de la escala se nota mas y donde el recurso rinde mas. El
+    contenido de cada ficha esta escrito con ese lector en mente: cinco datos por lugar, concretos
+    y comparables entre si (altura, ancho de frente, espesor, antiguedad, velocidad de avance), sin
+    parrafos largos. El uso previsto es en el aula, con las cartas repartidas por grupo y un
+    telefono o tablet por grupo.
+  </p>
+
+  <h3>Usuario secundario: visitantes de museos y centros de interpretacion turistica</h3>
+  <p>
+    El mismo set de cartas funciona como material de sala o de tienda: el visitante escanea la
+    carta que se lleva y accede al diorama. No requiere instalacion de vitrinas ni mantenimiento
+    de pantallas, y el contenido viaja con el objeto.
+  </p>
+
+  <h3>Contexto de uso y restricciones que impuso</h3>
+  <ul>
+    <li>Uso de pie, sostenido con una mano, en sesiones cortas de uno o dos minutos por carta.
+        De ahi que no haya ningun menu ni boton: toda la interaccion es apuntar la camara.</li>
+    <li>Iluminacion variable (aula, sala de museo, exterior). De ahi la eleccion de fotografias de
+        contraste alto que se explica en el punto siguiente.</li>
+    <li>Dispositivos de gama media. De ahi que los dioramas se generen con geometria primitiva y
+        sin texturas, y que la aplicacion se compile para ARM64 con OpenGLES3.</li>
+  </ul>
+
+</section>
+
+<!-- ============================================ PAGINA 3 -->
+<section class="pagina">
+
+  <h2>4. Justificacion de las imagenes marcadoras</h2>
+
+  <p>
+    Las tres marcadoras son fotografias de los propios lugares: la carta tiene que ser
+    reconocible como lo que es antes de que el usuario levante la camara, porque es el objeto el
+    que invita a escanear. Pero una foto no sirve como marcador por ser bonita.
+  </p>
+
+  <p>
+    ARCore no reconoce una imagen por su contenido sino por sus <strong>puntos
+    caracteristicos</strong>: zonas donde el gradiente cambia de forma marcada y localizable.
+    Necesita detalle denso, contraste alto en escala de grises, ausencia de patrones repetidos
+    y alguna asimetria que resuelva la orientacion sin ambiguedad. Las tres fotografias elegidas,
+    en el encuadre en que se usan:
+  </p>
+
+  <div class="marcadores">
+    <div class="marcador">
+      <img src="cartas/Obelisco.png" alt="Obelisco de Buenos Aires">
+      <div class="epigrafe"><strong>Obelisco</strong> &middot; 15 x 17 cm</div>
+    </div>
+    <div class="marcador">
+      <img src="cartas/Cataratas.png" alt="Cataratas del Iguazu">
+      <div class="epigrafe"><strong>Cataratas</strong> &middot; 15 x 17 cm</div>
+    </div>
+    <div class="marcador">
+      <img src="cartas/Perito_Moreno.png" alt="Glaciar Perito Moreno">
+      <div class="epigrafe"><strong>Perito Moreno</strong> &middot; 15 x 17 cm</div>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th style="width:22%">Marcadora</th>
+      <th>De donde salen sus puntos caracteristicos, y que resuelve su orientacion</th>
+    </tr>
+    <tr>
+      <td><strong>Obelisco</strong></td>
+      <td>Vista aerea al atardecer: el detalle cubre el cuadro entero, sin zonas planas. Fachadas,
+          carteles luminosos, sendas peatonales y autos aportan esquinas en todas las direcciones,
+          y el fuste blanco contra el asfalto en sombra da el contraste mas alto de las tres. La
+          orientacion la fijan las <strong>pantallas LED de la derecha</strong> y la plaza oscura
+          del angulo inferior izquierdo.</td>
+    </tr>
+    <tr>
+      <td><strong>Cataratas</strong></td>
+      <td>Textura densa en casi toda la superficie: los saltos, la roca humeda, la vegetacion y la
+          espuma del rio. La asimetria la dan el <strong>follaje oscuro del borde derecho</strong>
+          y la diagonal de la garganta hacia el angulo inferior izquierdo.</td>
+    </tr>
+    <tr>
+      <td><strong>Perito Moreno</strong></td>
+      <td>El frente astillado ocupa la banda central con altisima frecuencia espacial, y los
+          tempanos sobre el agua agregan contraste fuerte abajo. La orientacion la fijan la
+          <strong>montana oscura de la derecha</strong> y el promontorio rocoso de la izquierda.</td>
+    </tr>
+  </table>
+
+  <p>
+    Cada marcadora es una <strong>carta</strong>: marco, etiqueta y franja inferior con el
+    nombre y los datos. No es tan alargada como una carta de juego por una razon de tracking:
+    las fotos son cuadradas, y recortarlas para estirarla se come los bordes, que es donde esta
+    buena parte del detalle. Ese recorte hundia al Obelisco de 100 a 25; con la foto entera, las
+    tres puntuan <strong>90, 100 y 95</strong>. Miden 1228 x 1388 px y se declaran con un tamano
+    fisico de <strong>15 x 17 cm</strong>, asi que se <strong>imprimen al 100%</strong>: mas
+    chicas, la medida declarada deja de ser la real y el diorama sale con el tamano equivocado.
+    La library se arma por codigo, para que el nombre de cada entrada, la clave con la que se
+    busca su diorama, no pueda quedar mal escrito.
+  </p>
+
+
+</section>
+
+</body>
+</html>

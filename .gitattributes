@@ -7,7 +7,19 @@
 # and distributed under MIT License.
 
 # Define macros (only works in top-level gitattributes files)
-[attr]lfs               filter=lfs diff=lfs merge=lfs -text
+#
+# LFS DESACTIVADO A PROPOSITO.
+# El template original manda a Git LFS todas las imagenes, modelos, audio y PDFs.
+# Este proyecto pesa ~105 MB y su archivo mas grande son 2,6 MB, asi que no hace
+# falta: entra holgado en un repo normal. Con LFS, cualquiera que clone sin tener
+# git-lfs instalado (por ejemplo un profesor corrigiendo) se baja archivos de texto
+# con punteros en lugar de las imagenes y los PDFs.
+#
+# Para volver a activarlo: descomentar la linea de abajo, comentar la otra,
+# y correr `git lfs install` + `git lfs track` en el repo.
+#
+# [attr]lfs             filter=lfs diff=lfs merge=lfs -text
+[attr]lfs               -text
 [attr]unity-json        eol=lf linguist-language=json
 [attr]unity-yaml        merge=unityyamlmerge eol=lf linguist-language=yaml
 

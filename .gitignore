@@ -105,3 +105,50 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# ---------------------------------------------------------------------------
+# Agregados propios (el template de arriba no los cubre)
+# ---------------------------------------------------------------------------
+
+# Los .meta solo se ignoran si el asset correspondiente tambien se ignora
+!/[Aa]ssets/**/*.meta
+
+# Salida de build de Unity que NO va al repo (lo dice el nombre de la carpeta)
+*_BurstDebugInformation_DoNotShip/
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+*_ButDontShipItWithYourGame/
+
+# Unity 6 usa .slnx en lugar de .sln
+*.slnx
+
+# IDEs que el template no cubre
+.idea/
+/[Ll]ibrary[Pp]rojects/
+*.idb.meta
+/UIElementsSchema/
+/[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Resultados de tests
+/[Tt]est[Rr]esults/
+
+# ---------------------------------------------------------------------------
+# Firma y credenciales: NUNCA commitear
+# ---------------------------------------------------------------------------
+*.keystore
+*.jks
+keystore.properties
+/[Ss]igning/
+google-services.json
+GoogleService-Info.plist
+*.env
+.env.*
+secrets.json
+
+# Sistema operativo
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/

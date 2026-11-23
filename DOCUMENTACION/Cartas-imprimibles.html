@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cartas Patrimonio AR</title>
+<style>
+  /* Una carta por hoja A4, centrada, a tamano exacto: 150 x 169,54 mm, que es la
+     proporcion real del archivo (1228 x 1388 px) y la medida declarada en la
+     Reference Image Library. Nada mas en la pagina. */
+  @page { size: A4 portrait; margin: 0; }
+
+  html, body { margin: 0; padding: 0; }
+
+  .hoja {
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+  }
+  .hoja:last-child { page-break-after: auto; }
+
+  .hoja img {
+    width: 150mm;
+    height: 169.54mm;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<section class="hoja"><img src="cartas/Obelisco.png" alt=""></section>
+<section class="hoja"><img src="cartas/Cataratas.png" alt=""></section>
+<section class="hoja"><img src="cartas/Perito_Moreno.png" alt=""></section>
+
+</body>
+</html>

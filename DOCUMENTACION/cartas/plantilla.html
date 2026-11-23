@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  /* Carta de 1228 x 1388 px.
+     Dos reglas mandan sobre el diseno, y las dos son por el tracking:
+     1. La foto va ENTERA y a su resolucion nativa, 1200 x 1200. Recortarla o
+        escalarla le saca puntos caracteristicos a ARCore.
+     2. El marco y la franja negra son superficies planas, sin ningun punto.
+        Cuanto mas grandes, mas baja el puntaje, asi que van al minimo que
+        todavia se lee como carta: 14 px de marco y 160 px de franja. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1228px; height: 1388px; overflow: hidden; }
+  body { background: __MARCO__; font-family: Arial, Helvetica, sans-serif; }
+
+  .interior { position: absolute; inset: 14px; display: flex; flex-direction: column; }
+
+  .foto { flex: 0 0 1200px; overflow: hidden; position: relative; background: #000; }
+  .foto img { width: 1200px; height: 1200px; display: block; }
+
+  /* Etiqueta superior izquierda, como en la carta de referencia. */
+  .etiqueta { position: absolute; top: 0; left: 0; background: __MARCO__;
+              color: #fff; font-size: 34px; font-weight: 700; letter-spacing: .10em;
+              padding: 16px 28px 16px 24px; }
+
+  .pie { flex: 1 1 auto; background: #141414; padding: 0 32px;
+         display: flex; flex-direction: column; justify-content: center; }
+  .pie .nombre { color: #fff; font-size: __TAMANO__px; font-weight: 700;
+                 letter-spacing: -.01em; line-height: 1; }
+  .pie .datos  { color: #E0A96D; font-size: 34px; margin-top: 14px; letter-spacing: .01em; }
+</style>
+</head>
+<body>
+  <div class="interior">
+    <div class="foto">
+      <div class="etiqueta">PATRIMONIO AR</div>
+      <img src="../img/__ARCHIVO__" alt="">
+    </div>
+    <div class="pie">
+      <div class="nombre">__NOMBRE__</div>
+      <div class="datos">__DATOS__</div>
+    </div>
+  </div>
+</body>
+</html>
